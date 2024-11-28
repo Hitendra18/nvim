@@ -23,7 +23,6 @@
 -- 	}
 -- }
 
-
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
@@ -34,7 +33,14 @@ return {
 	opts = {
 		transparent_background = true,
 		-- no_italic = true,
-	}
+		-- color_overrides = {
+		-- 	mocha = {
+		-- 		base = "#000000",
+		-- 		mantle = "#000000",
+		-- 		crust = "#000000",
+		-- 	},
+		-- },
+	},
 }
 
 -- return {

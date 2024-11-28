@@ -11,7 +11,8 @@ vim.keymap.set("i", "<C-x>", function()
 end, { noremap = true })
 
 -- select all made easy
-vim.keymap.set("n", "<C-a>", "ggVG")
+-- (<C-a> is for increasing a number and <C-x> is for decreasing a number)
+-- vim.keymap.set("n", "<C-a>", "ggVG")
 
 -- indent in viaual mode without losing selection
 vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true })
@@ -21,10 +22,10 @@ vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open [D]iagnostic [Q]uickfix list" })
 
 -- split window navigation
-vim.keymap.set("n", "<C-Left>", "<C-w>h")
-vim.keymap.set("n", "<C-Down>", "<C-w>j")
-vim.keymap.set("n", "<C-Up>", "<C-w>k")
-vim.keymap.set("n", "<C-Right>", "<C-w>l")
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- split windows
 vim.keymap.set("n", "<leader>sv", "<cmd>vs<CR>")

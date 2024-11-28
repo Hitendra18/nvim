@@ -4,7 +4,7 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
-		{ "j-hui/fidget.nvim", opts = {} },
+		{ "j-hui/fidget.nvim", opts = {} }, -- shows lsp loading and progress on bottom right corner
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -53,27 +53,22 @@ return {
 			keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
 
 			----------------------- Diagnostics ------------------------
-			-- show diagnostics for line
 			opts.desc = "Show line diagnostics"
 			keymap.set("n", "<leader>dd", vim.diagnostic.open_float, opts)
 
-			-- jump to next diagnostic in buffer
 			opts.desc = "Go to next diagnostic"
 			keymap.set("n", "<leader>dn", function()
 				vim.diagnostic.jump({ count = 1, float = true })
 			end, opts)
 
-			-- jump to previous diagnostic in buffer
 			opts.desc = "Go to previous diagnostic"
 			keymap.set("n", "<leader>dp", function()
 				vim.diagnostic.jump({ count = -1, float = true })
 			end, opts)
 
-			-- list all of the diagnostics in the buffer using Telescope
 			opts.desc = "Show buffer diagnostics"
-			keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+			keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
-			-- see available code actions, in visual mode will apply to selection
 			opts.desc = "See available code actions"
 			keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
@@ -253,5 +248,9 @@ return {
 				new_config.cmd = cmd
 			end,
 		})
+
+		-- Docker lsp's
+		lspconfig["dockerls"].setup({})
+		lspconfig["docker_compose_language_service"].setup({})
 	end,
 }
